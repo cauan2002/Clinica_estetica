@@ -25,7 +25,7 @@ Sistema backend para gerenciamento de uma clínica de estética, incluindo cadas
 
 ---
 
-
+## 📂 Estrutura do Projeto
 📁 Projeto
 │
 ├── app.py # Inicialização da aplicação Flask
@@ -46,10 +46,4 @@ Sistema backend para gerenciamento de uma clínica de estética, incluindo cadas
 │ └── cliente_routes.py # Rotas relacionadas aos clientes
 
 
-
-
-
-
-
-## 📂 Estrutura do Projeto
 
