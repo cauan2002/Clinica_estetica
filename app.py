@@ -18,8 +18,8 @@ class APP_inicilize():
 
         with app.app_context():
           from Model.cliente import Cliente
-          from Model.procedimentos import Procedimento
-          from Model.agendamentos import Agendamento
+          from Model.procedimentos import Procedimentos
+          from Model.agendamentos import Agendamentos
 
 
         """try:

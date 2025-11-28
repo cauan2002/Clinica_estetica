@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from services.Cliente_service import cliente_service
 
 
-cliente_bp = Blueprint('cliente_bp', __name__)
+cliente_bp = Blueprint('cliente_bp', __name__,url_prefix=' ')
 
 
 
@@ -16,7 +16,7 @@ def serialize_cliente(c):
     }
 
 
-@cliente_bp.route('/clientes', methods=['GET'])
+@cliente_bp.route('/', methods=['GET'])
 def listar_clientes():
     service = cliente_service()
     clientes = service.Listar_todos()
