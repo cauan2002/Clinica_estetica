@@ -12,13 +12,20 @@ class Cliente(db.Model):
     genero = db.Column(db.String(20), nullable=True)
 
 
-    def __init__(self, id,nome,CPF,telefone,genero):
-        self.id = id
+    def __init__(self,nome,CPF,telefone,genero):
+        
         self.nome = nome
         self.CPF = CPF
         self.telefone = telefone
         self.genero = genero
     
+    @property
+    def id_cliente(self):
+        return self.id  
+    @id_cliente.setter
+    def id_cliente(self, id):
+        self.id = id
+
     @property
     def name_cliente(self):
         return self.nome

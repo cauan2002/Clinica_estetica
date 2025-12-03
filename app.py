@@ -33,7 +33,7 @@ class APP_inicilize():
             try:
                 with app.app_context():
                     print('criando tabelas')
-                    db.create_all()
+                    db.create_all() # Cria todas as tabelas definidas nos modelos
                     print('algumas tabelas ja existiam ou foram criadas!')
                     print('banco sincronizado com o Models!')
 
