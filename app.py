@@ -22,12 +22,6 @@ class APP_inicilize():
           from Model.agendamentos import Agendamentos
 
 
-        """try:
-            with app.app_context():
-                from Model import cliente, procedimentos, agendamentos
-            except Exception:
-                pass"""
-
         if app.config.get("CREATE_DB_ON_STARTUP", False):
 
             try:
@@ -50,8 +44,12 @@ class APP_inicilize():
         # Registrar rotas (blueprints)
         try:
             from routes import cliente_routes
+            from routes.agendamentos_Routes import  Rotas_Agendamentos 
+            from routes.procedimentoRoutes import Rotas_Procedimento 
             
             app.register_blueprint(cliente_routes.cliente_bp, url_prefix="/api/clientes")
+            app.register_blueprint(Rotas_Agendamentos.agendamentos_bp, url_prefix="/api/agendamentos")
+            app.register_blueprint(Rotas_Procedimento.procedimento_bp, url_prefix="/api/procedimentos")
 
         except Exception as e:
             print('Erro ao registrar blueprint:', e) # Se houver erro ao importar/registrar o blueprint, imprime o erro para debug

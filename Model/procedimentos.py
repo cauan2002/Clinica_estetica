@@ -10,42 +10,36 @@ class Procedimentos(db.Model):
     preco = db.Column(db.Float, nullable=False)
     observacoes = db.Column(db.Text, nullable=True)
 
-    def __init__(self, ID, nome_procedimento=None, preco=0.0, observacoes=None):
-        self.ID = ID
+    def __init__(self, nome_procedimento=None, preco=0.0, observacoes=None):
+        
         self.nome_procedimento = nome_procedimento
         self.preco = preco
         self.observacoes = observacoes
-    """@property
-    def id(self):
-        return self.ID
 
-    @id.setter
-    def id(self, ID):
-        self.ID = ID"""""
 
-    @property
-    def nome_procedimento(self):
-        return self.nome_procedimento
+    # @property
+    # def nome_procedimento(self):
+    #     return self.nome_procedimento
 
-    @nome_procedimento.setter
-    def nome_procedimento(self, nome_procedimento):
-        self.nome_procedimento = nome_procedimento
+    # @nome_procedimento.setter
+    # def nome_procedimento(self, nome_procedimento):
+    #     self.nome_procedimento = nome_procedimento
 
-    @property
-    def preco(self):
-        return self.preco
+    # @property
+    # def preco(self):
+    #     return self.preco
 
-    @preco.setter
-    def preco(self, preco):
-        self.preco = preco  
+    # @preco.setter
+    # def preco(self, preco):
+    #     self.preco = preco  
 
-    @property
-    def observacoes(self):
-        return self.observacoes
+    # @property
+    # def observacoes(self):
+    #     return self.observacoes
 
-    @observacoes.setter
-    def observacoes(self, observacoes):
-        self.observacoes = observacoes
+    # @observacoes.setter
+    # def observacoes(self, observacoes):
+    #     self.observacoes = observacoes
 
 if __name__ == "__main__":
    pass

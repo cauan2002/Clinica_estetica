@@ -13,20 +13,15 @@ class Agendamentos(db.Model):
 
     status_options = ['confirmado', 'concluido', 'cancelado','pendente']
 
-    def __init__(self, id, id_cliente, id_procedimento, data, hora, status):
-        self.id = id
+    def __init__(self, id_cliente, id_procedimento, data, hora, status):
+        
         self.id_cliente = id_cliente
         self.id_procedimento = id_procedimento
         self.data = data
         self.hora =hora
         self.status = status
 
-    @property
-    def id_agendamento(self):
-        return self.id
-    @id_agendamento.setter
-    def id_agendamento(self, id):
-        self.id = id
+
 
     @property
     def id_cliente(self):
@@ -63,6 +58,7 @@ class Agendamentos(db.Model):
     def status(self, status):
         if status.lower() not in self.status_options:
             raise ValueError(f'status invalido, escolha entre: {", ".join(self.status_options)}')
-
-
         self.status = status
+
+if __name__ == "__main__":
+   pass
