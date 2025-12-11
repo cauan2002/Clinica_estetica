@@ -1,15 +1,7 @@
 from services.procedimentoService import procedimento_service
 from flask import Blueprint, request, jsonify
+from serializer.procedimentos_serializer import procedimentosSerializer
 
-# procedimento_bp = Blueprint('procedimento_bp', __name__, url_prefix=' ')
-
-def serialize_procedimento(p):
-    return {
-        'ID': p.id,
-        'nome_procedimento': getattr(p, 'nome_procedimento', None),
-        'preco': getattr(p, 'preco', None),
-        'observacoes': getattr(p, 'observacoes', None)
-    }
 
 class Rotas_Procedimento(): 
 
@@ -20,7 +12,7 @@ class Rotas_Procedimento():
     def listar_procedimentos():
         service = procedimento_service()
         procedimentos = service.Listar_todos()
-        return jsonify([serialize_procedimento(p) for p in procedimentos]), 200
+        return jsonify([procedimentosSerializer.serialize_procedimento(p) for p in procedimentos]), 200
 
     @staticmethod
     @procedimento_bp.route('/<int:id>', methods=['GET'])
@@ -29,7 +21,7 @@ class Rotas_Procedimento():
         p = service.mostrar_por_id(id)
         if not p:
             return jsonify({'error': 'Procedimento não encontrado'}), 404
-        return jsonify(serialize_procedimento(p)), 200
+        return jsonify(procedimentosSerializer.serialize_procedimento(p)), 200
 
     @staticmethod
     @procedimento_bp.route('/', methods=['POST'])
@@ -47,7 +39,7 @@ class Rotas_Procedimento():
 
         try:
             procedimento = service.cadastrarProcedimento(nome_procedimento, preco, observacoes)
-            return jsonify(serialize_procedimento(procedimento)), 201
+            return jsonify(procedimentosSerializer.serialize_procedimento(procedimento)), 201
         
         except Exception as e:
             print('Erro ao criar procedimento:', e)

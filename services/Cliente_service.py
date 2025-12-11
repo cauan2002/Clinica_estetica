@@ -10,6 +10,7 @@ class cliente_service():
     def cadastrar(self, nome , CPF, telefone, genero):
         from DataBase.database import db
         novo_cliente=Cliente(nome=nome , CPF=CPF, telefone=telefone, genero=genero)
+        
         db.session.add(novo_cliente)
         db.session.commit()
         return novo_cliente   
