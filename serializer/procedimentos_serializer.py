@@ -1,5 +1,5 @@
 class procedimentosSerializer:
-
+    @staticmethod
     def serialize_procedimento(p):
       
       return {

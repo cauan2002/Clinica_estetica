@@ -10,36 +10,10 @@ class Procedimentos(db.Model):
     preco = db.Column(db.Float, nullable=False)
     observacoes = db.Column(db.Text, nullable=True)
 
-    def __init__(self, nome_procedimento=None, preco=0.0, observacoes=None):
-        
-        self.nome_procedimento = nome_procedimento
-        self.preco = preco
-        self.observacoes = observacoes
+    # nao ha necessidade de criar o construtor (__init__) explicitamente
+    # o SQLAlchemy ja faz isso automaticamente
 
 
-    # @property
-    # def nome_procedimento(self):
-    #     return self.nome_procedimento
-
-    # @nome_procedimento.setter
-    # def nome_procedimento(self, nome_procedimento):
-    #     self.nome_procedimento = nome_procedimento
-
-    # @property
-    # def preco(self):
-    #     return self.preco
-
-    # @preco.setter
-    # def preco(self, preco):
-    #     self.preco = preco  
-
-    # @property
-    # def observacoes(self):
-    #     return self.observacoes
-
-    # @observacoes.setter
-    # def observacoes(self, observacoes):
-    #     self.observacoes = observacoes
 
 if __name__ == "__main__":
    pass

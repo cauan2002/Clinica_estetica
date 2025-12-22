@@ -17,7 +17,8 @@ class Agendamentos_service():
         try:
           
           
-           from DataBase.database import db
+          
+
            validate_agendamentos.validate_data(payload)
            dao = Agendamentos_DAO()
 

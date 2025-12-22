@@ -1,5 +1,7 @@
 class AgendamentosSerializer:
-   
+ 
+ 
+ @staticmethod
  def serializeAgendamento(a):
     return {
     'id': a.id,

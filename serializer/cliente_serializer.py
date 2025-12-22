@@ -1,7 +1,7 @@
 class ClienteSerializer:
 
     @staticmethod
-    def serialize_cliente(c): 
+    def serializeCliente(c): 
         return {
             'id': c.id,
             'nome': getattr(c, 'nome', None),

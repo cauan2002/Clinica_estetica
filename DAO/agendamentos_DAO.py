@@ -5,7 +5,11 @@ class Agendamentos_DAO():
 
     def agendar(self, id_cliente, id_procedimento, data, hora, status):
         
-        novo_agendamento = Agendamentos(id_cliente=id_cliente, id_procedimento=id_procedimento, data=data, hora=hora, status=status)
+        novo_agendamento = Agendamentos(id_cliente=id_cliente,
+                                         id_procedimento=id_procedimento,
+                                           data=data, 
+                                           hora=hora, 
+                                           status=status)
         
         db.session.add(novo_agendamento)
         db.session.commit()

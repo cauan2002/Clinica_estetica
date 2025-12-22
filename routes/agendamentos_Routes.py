@@ -52,6 +52,8 @@ class Rotas_Agendamentos():
     
         result,status = service.cadastrar(data)
 
+        
+
         return jsonify(result), status
      
         

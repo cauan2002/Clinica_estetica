@@ -1,13 +1,38 @@
+from flask import jsonify
 from DAO.procedimentosDAO import procedimentos_DAO
 from Model.procedimentos import Procedimentos
+from validator.validate_procedimentos import validateProcedimentos as ValidatorP
+from serializer.procedimentos_serializer import procedimentosSerializer as SerializerP
 
 class procedimento_service():
 
     def __init__(self):
         self.procedimento_dao = procedimentos_DAO()
 
-    def cadastrarProcedimento(self, nome_procedimento, preco, observacoes=None):
-        return self.procedimento_dao.criarProcedimento(nome_procedimento, preco, observacoes)  
+    def cadastrarProcedimento(self, payload):
+        
+        ValidatorP.validate_data(payload)
+
+        nome_procedimento = payload.get('nome_procedimento')
+        preco = payload.get('preco')    
+        observacoes = payload.get('observacoes')
+
+        # novo_procedimento = procedimentos_DAO.criarProcedimento(
+        #     nome_procedimento=nome_procedimento,
+        #     preco=preco,
+        #     observacoes=observacoes
+        # )
+
+        procedimento = Procedimentos(
+            nome_procedimento=nome_procedimento,
+            preco=preco,
+            observacoes=observacoes
+        
+        )
+
+        procedimento_salvo = procedimentos_DAO.criarProcedimento(procedimento)
+
+        return jsonify(SerializerP.serialize_procedimento(procedimento_salvo)), 201
     
 
 

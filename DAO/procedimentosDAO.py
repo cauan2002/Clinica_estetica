@@ -1,14 +1,15 @@
 from Model.procedimentos import Procedimentos
 
 class procedimentos_DAO():
-
-    def criarProcedimento(self, nome_procedimento, preco, observacoes=None):
+    @staticmethod
+    def criarProcedimento( procedimento:Procedimentos):
         from DataBase.database import db
-        novo_procedimento = Procedimentos(nome_procedimento=nome_procedimento, preco=preco, observacoes=observacoes)
-        
-        db.session.add(novo_procedimento)
+       
+
+
+        db.session.add(procedimento)
         db.session.commit()
-        return novo_procedimento
+        return procedimento
 
     def mostrar_todos(self):
         from DataBase.database import db

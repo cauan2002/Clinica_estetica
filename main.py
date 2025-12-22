@@ -60,7 +60,4 @@ if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=True) # Executa a aplicação localmente para desenvolvimento
 
 
-# Expose database engine and session
-# engine= db.engine
-# session = db.session
-# no need to expose engine and session if not used directly
+

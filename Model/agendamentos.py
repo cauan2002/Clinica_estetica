@@ -17,7 +17,6 @@ class Agendamentos(db.Model):
     status = db.Column(db.Enum('confirmado', 'concluido', 'cancelado', 'pendente'),
                         default='pendente', 
                         nullable=False)
-    status_options = ['confirmado', 'concluido', 'cancelado','pendente']
 
     # nao ha necessidade de criar o construtor (__init__) explicitamente
     # o SQLAlchemy ja faz isso automaticamente

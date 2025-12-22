@@ -1,6 +1,7 @@
 from services.procedimentoService import procedimento_service
 from flask import Blueprint, request, jsonify
 from serializer.procedimentos_serializer import procedimentosSerializer
+from validator.validate_procedimentos import validateProcedimentos as ValidatorP
 
 
 class Rotas_Procedimento(): 
@@ -29,17 +30,9 @@ class Rotas_Procedimento():
         service = procedimento_service()
         data = request.get_json() or {}
 
-        nome_procedimento = data.get('nome_procedimento')
-        preco = data.get('preco')
-        observacoes = data.get('observacoes')
-
-        if not (nome_procedimento and preco is not None):
-            print('Dados incompletos para criar procedimento')
-            return jsonify({'error': 'nome_procedimento e preco são obrigatórios'}), 400
-
         try:
-            procedimento = service.cadastrarProcedimento(nome_procedimento, preco, observacoes)
-            return jsonify(procedimentosSerializer.serialize_procedimento(procedimento)), 201
+           result,status = service.cadastrarProcedimento(data)
+           return jsonify(result), status
         
         except Exception as e:
             print('Erro ao criar procedimento:', e)
