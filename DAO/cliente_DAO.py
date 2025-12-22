@@ -41,7 +41,7 @@ class Cliente_DAO():
             if hasattr(cliente, campo): # Verifica se o atributo existe no objeto
                 setattr(cliente, campo, valor) # Atualiza o atributo dinamicamente
 
-        from Clinica_estetica.main import db
+        from DataBase.database import db
         db.session.commit() # Confirma as alterações no banco de dados
         return cliente # Retorna o cliente atualizado
     

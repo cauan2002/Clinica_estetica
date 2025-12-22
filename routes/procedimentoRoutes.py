@@ -37,3 +37,15 @@ class Rotas_Procedimento():
         except Exception as e:
             print('Erro ao criar procedimento:', e)
             return jsonify({'error': str(e)}), 500
+        
+    @staticmethod
+    @procedimento_bp.route('/<int:id>', methods=['PUT'])
+    def atualizar_procedimento(id):
+        service = procedimento_service()
+        data = request.get_json() or {}
+        Query_result = service.atualizar(id, data)
+
+        if Query_result is None:
+            return jsonify({'error': 'Procedimento não encontrado'}), 404
+        
+        return jsonify(procedimentosSerializer.serialize_procedimento(Query_result)), 200
